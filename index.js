@@ -67,38 +67,34 @@ function eliminate() {
             let value = e.target.dataset.action;
             let chosen = playerChoices.find((choice) => choice.name === value);
             e.target.classList.add("selected");
-            console.log(chosen);
-            let computerLastChoice = computerChoices.filter(choice => {
-                let result = play(choice, chosen);
-                console.log(result);
-                return result === "Win";
-            })
-            if(computerLastChoice.length) {
-                console.log("yea", computerLastChoice.length)
-                console.log(computerLastChoice)
-                end(chosen, computerLastChoice[0]);
-                return;
-            }
-            computerLastChoice = computerChoices.filter(choice => {
-                let result = play(choice, chosen);
-                console.log(result);
-                return result === "Draw";
-            }) 
-            if(computerLastChoice.length) {
-                end(chosen, computerLastChoice[0]);
-                return;
-            }
-            // console.log(computerLastChoice);
-            computerLastChoice = computerChoices[Math.floor(Math.random() * 2)];
-            end(chosen, computerLastChoice);
+            // console.log(chosen);
+            end(chosen, computerEliminate());
         })
     })
 }
+function computerEliminate() {
+    let lastChoice = computerChoices[Math.floor(Math.random() * 2)];
+    let triggered = false;
+    computerSide.forEach(choice => {
+        let value = choice.dataset.action;
+        console.log(value);
+        if(value === lastChoice.name) {
+            if(triggered) {
+                choice.classList.add("eliminated");
+            } else {
+                choice.classList.add("selected");
+                triggered = true;
+            }
+        }
+        else choice.classList.add("eliminated");
+    })
+    return lastChoice;
+}
 function end(chosen, computerLastChoice) {
-    console.log(chosen);
+    // console.log(chosen);
     console.log(computerLastChoice);
     console.log(`You ${play(chosen, computerLastChoice)}`);
-    // showPopup(`You ${play(chosen, computerLastChoice)}`);
+    showPopup(`You ${play(chosen, computerLastChoice)}`);
 }
 function displaySelections(element, gameObj) {
     element.appendChild(document.createTextNode(gameObj.emoji));
