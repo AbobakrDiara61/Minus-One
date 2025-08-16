@@ -53,10 +53,8 @@ function getSelections(selectionName) {
     }
 }
 function eliminate() {
-/*     computerChoices.push(choiceIterator.next().value);
-    computerChoices.push(choiceIterator.next().value); */
-    computerChoices.push(gameChoices[0]);
-    computerChoices.push(gameChoices[0]);
+    computerChoices.push(choiceIterator.next().value);
+    computerChoices.push(choiceIterator.next().value);
     for(let i = 0; i < 2; i++) {
         displaySelections(computerSide[i], computerChoices[i]);
     }
