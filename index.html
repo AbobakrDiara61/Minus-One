@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <main class="container">
+            <div class="game-container">
+                <h1>Rock Paper Scissors</h1>
+                <div class="display">Let's Play</div>
+                <div class="play-container">
+                    <div class="player-side choice">
+                        <button class="choosen"></button>
+                        <button class="choosen"></button>
+                    </div>
+                    <div class="computer-side choice">
+                        <button class="choosen"></button>
+                        <button class="choosen"></button>
+                    </div>
+                </div>
+                <div class="controlls">
+                    <button id="rock" data-action="rock" class="game-btn">&#x1F44A;</button>
+                    <button id="paper" data-action="paper" class="game-btn">&#x1f590;</button>
+                    <button id="scissors" data-action="scissors" class="game-btn">&#x270c;</button>
+                </div>
+            </div>
+        </main>
+        <div class="popup">
+            <p>Yea Win</p>
+        </div>
+        <script src="index.js"></script>
+        <script src="animation.js"></script>
+    </body>
+</html>
+
+
+<!-- const choices = document.querySelectorAll(".choice");
+const playBtn = document.querySelector(".play");
+// Array of emoji options (rock, paper, scissors, etc.)
+const emojiOptions = ["✊", "✋", "✌️", "🖖", "🦎"];
+
+choices.forEach((choice) => {
+    let index = 0;
+    playBtn.addEventListener("click", () => {
+        /* choice.classList.add("rotate");
+        setTimeout(() => {
+            choice.classList.remove("rotate");
+            }, 3000); */
+        choice.firstElementChild.classList.add("animate-in");
+        /* setTimeout(() => {
+            choice.firstElementChild.classList.add("animate-out")
+            }, 1000);
+            */
+
+        let handler = setInterval(() => {
+            choice.firstElementChild.firstElementChild.innerHTML = emojiOptions[index];
+            index++;
+            if(index == 5) {
+                clearInterval(handler);
+            }
+        }, 1000);
+
+    });
+
+})
+
+-->
